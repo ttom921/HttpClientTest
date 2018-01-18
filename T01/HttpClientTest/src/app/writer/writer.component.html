@@ -1,0 +1,20 @@
+<h3 *ngIf="obsTextMsg | async as message"> {{ message }} </h3>
+
+
+<h3>Favorite Books</h3>
+
+<ul>
+  <li *ngFor="let book of favBooks" >
+    Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}, Year: {{book.year}}
+  </li>
+</ul>
+
+<h3>Favorite Writer Details</h3>
+<div *ngIf="favWriter">
+  Writer Id: <b>{{favWriter.writerId}}</b>, Writer Name: <b>{{favWriter.writerName}}</b>
+  <ul>
+    <li *ngFor="let book of favWriter.books" >
+      Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}, Year: {{book.year}}
+    </li>
+  </ul>
+</div>
