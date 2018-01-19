@@ -1,0 +1,66 @@
+<h1>Angular 5 HttpClient Demo App</h1>
+<p>This is a complete mini-CRUB application using a Node back-end. See src/app/demo/demo.service.ts for the API call code.</p>
+<h2>Foods</h2>
+<ul>
+  <li *ngFor="let food of foods;let in = index">
+      <!-- <h3>{{food.id}}</h3> -->
+    <!-- <h3>{{food.name}}</h3> -->
+     <input type="text" name="food-name" [(ngModel)]="food.name">
+     <button (click)="updateFood(food)">Save</button>
+    <button (click)="deleteFood(food)">Delete</button>
+  </li>
+</ul>
+<!-- {{foods | json}} -->
+<br/>
+<p>Create a new food:
+  <input type="text" name="food_name" [(ngModel)]="food_name">
+  <button (click)="createFood(food_name)">Save</button>
+</p>
+<pre>----------------------------</pre>
+<h2>Books list</h2>
+<table>
+  <thead>
+    <th>id</th>
+    <th>title</th>
+    <th>Description</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{book.id}}</td>
+      <td><input type="text" [(ngModel)]="book.title" name="btitle" ></td>
+      <td><input type="text" [(ngModel)]="book.description" name=bdesc  ></td>
+      <td>
+        <button (click)="updateBook(book)">Save</button>
+        <button (click)="deleteBook(book)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Create a new book:
+  <form>
+    <div>
+        <label for="title">title *</label>
+        <input type="text" [(ngModel)]="model.title" name="mtitle" required>
+    </div>
+     <div>
+        <label for="description">Description *</label>
+        <input type="text"  [(ngModel)]="model.description"  name="mdesc">
+     </div>
+     <button type="button"  (click)="createbook()">Add</button>
+  </form>
+  
+<h2>Books and Foods</h2>
+
+<p>This is an example of loading data from multiple endpoints using Observable.forkJoin(). The API calls here are read-only.</p>
+<h3>Foods</h3>
+<ul>
+  <li *ngFor="let food of foods">{{food.name}}</li>
+</ul> 
+<h3>Books</h3>
+<ul>
+  <li *ngFor="let book of books">{{book.title}}</li>
+</ul>
+
+<button type="button"  (click)="getBooksAndFoods()">getbookand food</button>
