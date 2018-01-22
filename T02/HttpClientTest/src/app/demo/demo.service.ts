@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx'
+import { Book } from '../models/demoentity';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,7 +18,7 @@ export class DemoService {
   constructor(private http: HttpClient) { }
   apiUrl = 'http://localhost:5100/api/Foods/';
   apibookurl = 'http://localhost:5100/api/Books/';
-
+  specurl='http://localhost:5100/api/Foods/PutBook';
   //
   getBooksAndMovies() {
     return Observable.forkJoin(
@@ -26,6 +27,10 @@ export class DemoService {
     );
   }
 
+  createOFood(book: Book) {
+    const body = JSON.stringify(book);
+    return this.http.post(this.specurl, body, httpOptions);
+  }
   // 食物
   // 取得所有的食物
   getFoods(): Observable<any> {

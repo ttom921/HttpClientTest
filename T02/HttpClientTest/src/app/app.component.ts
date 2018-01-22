@@ -62,6 +62,20 @@ export class AppComponent implements OnInit {
     );
 
   }
+  createOFood(name) {
+    let book = new Book(-1, '2222', '33333');
+    this._demoService.createOFood(book).subscribe(
+      data => {
+        // refresh the list
+        this.getFoods();
+        return true;
+      },
+      err => {
+        this.ErrorHandle(err);
+      },
+      () => { console.log('done create food'); }
+    );
+  }
   // 更新
   updateFood(food) {
     this._demoService.updateFood(food).subscribe(
